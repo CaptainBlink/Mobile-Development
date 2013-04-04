@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, MainMenu!</string>
+    <string name="app_name">OurGame</string>
+    <string name="start_game">Start Game</string>
+    <string name="cont">Continue</string>
+    <string name="MM">Main Menu</string>
+    <string name="lose">Oops! try again...</string>
+    <string name="win">Congratulations! you winner!</string>
+	<string name="reklama">Discover How To Create Apps &amp; Games</string>
+	<color name="unsel">#63B7FF</color>
+	<color name="sel">#FFFFFF</color>
+</resources>
