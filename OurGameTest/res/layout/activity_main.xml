@@ -1,0 +1,54 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    tools:context=".MainActivity" >
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/main_title" />
+
+    <RelativeLayout
+        android:id="@+id/btn_start"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal" >
+
+        <TextView
+            android:id="@+id/text_start"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:gravity="center|center_horizontal"
+            android:text="Start Game"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <ImageView
+            android:id="@+id/ing_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/btn" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/wwwtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp"
+        android:text="wwwtext" />
+
+</RelativeLayout>

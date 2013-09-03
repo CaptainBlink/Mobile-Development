@@ -6,10 +6,16 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.Random;
 
 import org.apache.http.impl.client.DefaultHttpClient;
 
+=======
+
+import java.util.Random;
+import org.apache.http.impl.client.DefaultHttpClient;
+>>>>>>> eb9020925f5226a671efe83236e7d0b546e9219c
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
