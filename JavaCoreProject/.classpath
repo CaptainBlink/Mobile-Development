@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="C:/Users/hp user/Desktop/flixel/flixel.jar"/>
+	<classpathentry kind="lib" path="C:/Users/hp user/Desktop/flixel/flixel-android.jar"/>
+	<classpathentry kind="lib" path="C:/Users/hp user/Desktop/flixel/flixel-android-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/hp user/Desktop/flixel/flixel-desktop.jar"/>
+	<classpathentry kind="lib" path="C:/Users/hp user/Desktop/flixel/flixel-desktop-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/hp user/Desktop/flixel/flixel-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/hp user/Desktop/AdamAtomic-flixel-8989e50"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

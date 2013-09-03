@@ -1,0 +1,47 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+	<TextView
+        android:layout_marginTop="40sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/main_activity_top_text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <Button
+    	android:id="@+id/main_activity_button_item_list"
+        android:layout_marginTop="20sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="420sp"
+        android:layout_height="wrap_content"
+        android:text="@string/main_activity_button_item_list" />
+    <Button
+        android:id="@+id/main_activity_button_shopping_list"
+        android:layout_marginTop="20sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="420sp"
+        android:layout_height="wrap_content"
+        android:text="@string/main_activity_button_shopping_list" /> 
+    <Button
+        android:id="@+id/main_activity_button_reset_db_default"
+        android:layout_marginTop="20sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="420sp"
+        android:layout_height="wrap_content"
+        android:text="@string/main_activity_button_reset_db_default" /> 
+    <Button
+        android:id="@+id/main_activity_button_reset_db_clean"
+        android:layout_marginTop="20sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="420sp"
+        android:layout_height="wrap_content"
+        android:text="@string/main_activity_button_reset_db_clean" />
+        <Button
+        android:id="@+id/main_activity_button_done"
+        android:layout_marginTop="20sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="420sp"
+        android:layout_height="wrap_content"
+        android:text="@string/main_activity_button_done" /> 
+</LinearLayout>

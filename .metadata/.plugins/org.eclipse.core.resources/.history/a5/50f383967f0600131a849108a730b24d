@@ -1,0 +1,65 @@
+package model.bookshelf;
+
+public class Book {
+private String isbn;
+private String title;
+private String authors;
+private String year;
+private boolean recommend;
+
+
+
+public Book(String isbn, String title, String authors, String year,
+		boolean recommend) {
+	super();
+	this.isbn = isbn;
+	this.title = title;
+	this.authors = authors;
+	this.year = year;
+	this.recommend = recommend;
+}
+public Book(String isbn, String title, String authors, String year) {
+	super();
+	this.isbn = isbn;
+	this.title = title;
+	this.authors = authors;
+	this.year = year;
+	
+}
+public String getIsbn() {
+	return isbn;
+}
+public void setIsbn(String isbn) {
+	this.isbn = isbn;
+}
+public String getTitle() {
+	return title;
+}
+public void setTitle(String title) {
+	this.title = title;
+}
+public String getAuthors() {
+	return authors;
+}
+public void setAuthors(String authors) {
+	this.authors = authors;
+}
+public String getYear() {
+	return year;
+}
+public void setYear(String year) {
+	this.year = year;
+}
+public boolean isRecommend() {
+	return recommend;
+}
+public void setRecommend(boolean recommend) {
+	this.recommend = recommend;
+}
+@Override
+public String toString() {
+	return "Book [isbn=" + isbn + ", title=" + title + ", authors=" + authors
+			+ ", year=" + year + ", recommend=" + recommend + "]";
+}
+
+}

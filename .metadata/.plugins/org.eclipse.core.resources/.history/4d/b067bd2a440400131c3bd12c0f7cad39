@@ -1,0 +1,203 @@
+package model.bookshelfmanager;
+
+import com.example.bookshelfmanager.R;
+
+import dao.bookshelfmanager.BookContentProvider;
+import database.bookshelfmanager.BookTable;
+
+import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.ContentValues;
+
+import android.database.Cursor;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class NewBookActivity extends Activity {
+	private Integer currentBookId;
+
+	private EditText ISBN;
+	private EditText Title;
+	private EditText Authors;
+	private EditText Year;
+	private Button btnSave;
+	private CheckBox checkBoxReccomend;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_new_book);
+		initializeFields();
+		Bundle b = getIntent().getExtras();
+		if (b != null && b.containsKey("bookId"))
+			currentBookId = b.getInt("bookId");
+
+		if (currentBookId != null) {
+
+			String where = BookTable.COLUMN_ID + " = ?";
+			String[] param = new String[] { currentBookId.toString() };
+
+			Cursor cursor = getContentResolver().query(
+					BookContentProvider.CONTENT_URI, null, where, param, null);
+
+			if (cursor.getCount() < 1) {
+				currentBookId = null;
+			} else {
+				cursor.moveToFirst();
+				String isbn = cursor.getString(1);
+				String title = cursor.getString(2);
+				String authors = cursor.getString(3);
+				String year = cursor.getString(4);
+				Integer recommend = cursor.getInt(5);
+
+				ISBN.setText(isbn);
+				Title.setText(title);
+				Authors.setText(authors);
+				Year.setText(year);
+
+				checkBoxReccomend.setChecked(recommend != null
+						&& recommend == 1 ? true : false);
+			}
+			btnSave.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+				
+					saveBook();
+				}
+			});
+			cursor.close();
+		}
+	}
+
+	private void initializeFields() {
+
+		ISBN = (EditText) findViewById(R.id.edit_ISBN);
+		Title = (EditText) findViewById(R.id.editText_Title);
+		Authors = (EditText) findViewById(R.id.editText_Authors);
+		Year = (EditText) findViewById(R.id.edit_Year);
+		btnSave = (Button) findViewById(R.id.button1);
+		checkBoxReccomend = (CheckBox) findViewById(R.id.checkBox1);
+
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.menu_new_book, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle item selection
+		switch (item.getItemId()) {
+		case R.id.new_book:
+			saveBook();
+			return true;
+		case R.id.edit_book:
+			editBook();
+			return true;
+		case R.id.delete_book:
+			deleteBook();
+			return true;
+		case R.id.show_book:
+			// showBook();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
+	// private void showBook() {
+	// Intent intent = new Intent(this, GoogleBooksActivity.class);
+	// Bundle b = new Bundle();
+	// b.putString("address", Address.getText().toString());
+	// intent.putExtras(b);
+	// startActivity(intent);
+	// }
+
+	private void deleteBook() {
+		if (currentBookId != null) {
+			ContentResolver resolver = getContentResolver();
+			resolver.delete(BookContentProvider.CONTENT_URI,
+					BookTable.COLUMN_ID + " = ?",
+					new String[] { currentBookId.toString() });
+			finish();
+		} else {
+			Toast.makeText(getBaseContext(), "No Book selected",
+					Toast.LENGTH_SHORT).show();
+		}
+	}
+
+	private void saveBook() {
+
+		if (currentBookId == null) {
+		
+			String input =ISBN.getText().toString();
+			String validISBN = null;
+			Boolean b = true;
+			long isbn;
+			try { 
+			isbn = Long.parseLong(input); 
+			validISBN = String.valueOf(isbn);
+						} 
+			catch(NumberFormatException nFE) { 
+			b = false;
+			Toast.makeText(getBaseContext(), "ISBN must me number value !",
+					Toast.LENGTH_SHORT).show();
+			}
+			
+			ContentResolver resolver = getContentResolver();
+			ContentValues values = new ContentValues();
+
+			values.put(BookTable.COLUMN_ISBN, validISBN);
+			values.put(BookTable.COLUMN_TITLE, Title.getText().toString());
+			values.put(BookTable.COLUMN_AUTHORS, Authors.getText().toString());
+			values.put(BookTable.COLUMN_YEAR, Year.getText().toString());
+			values.put(BookTable.COLUMN_RECOMMEND,
+					(checkBoxReccomend.isChecked() ? 1 : 0));
+
+			resolver.insert(BookContentProvider.CONTENT_URI, values);
+		} else {
+
+			ContentResolver resolver = getContentResolver();
+			ContentValues values = new ContentValues();
+			values.put(BookTable.COLUMN_ISBN, ISBN.getText().toString());
+			values.put(BookTable.COLUMN_TITLE, Title.getText().toString());
+			values.put(BookTable.COLUMN_AUTHORS, Authors.getText().toString());
+			values.put(BookTable.COLUMN_YEAR, Year.getText().toString());
+			values.put(BookTable.COLUMN_RECOMMEND,
+					(checkBoxReccomend.isChecked() ? 1 : 0));
+
+			resolver.update(BookContentProvider.CONTENT_URI, values,
+					BookTable.COLUMN_ID + " = ?",
+					new String[] { currentBookId.toString() });
+		}
+		finish();
+	}
+
+	private void editBook() {
+
+		ContentResolver resolver = getContentResolver();
+
+		ContentValues values = new ContentValues();
+		values.put(BookTable.COLUMN_ISBN, ISBN.getText().toString());
+		values.put(BookTable.COLUMN_TITLE, Title.getText().toString());
+		values.put(BookTable.COLUMN_AUTHORS, Authors.getText().toString());
+		values.put(BookTable.COLUMN_YEAR, Year.getText().toString());
+		values.put(BookTable.COLUMN_RECOMMEND,
+				(checkBoxReccomend.isChecked() ? 1 : 0));
+		resolver.insert(BookContentProvider.CONTENT_URI, values);
+
+	}
+}

@@ -1,0 +1,122 @@
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ItemRowActivity" >		    
+    <LinearLayout
+		android:id="@+id/item_row_activity_linearLayout1"
+	    android:layout_width="match_parent"
+	    android:layout_height="35sp"
+	    android:layout_marginTop="5sp"
+	    android:orientation="horizontal" >
+		<TextView
+			android:layout_width="140sp"
+		    android:layout_height="match_parent"
+		    android:gravity="left"
+		    android:textSize="25sp"
+		    android:layout_marginLeft="10dp"
+		    android:text="@string/item_row_activity_item" />
+		<EditText
+	    	android:id="@+id/item_row_activity_edittext_item"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_marginRight="10sp"
+	        android:singleLine="true" >
+	    	<requestFocus />
+       	</EditText>
+	</LinearLayout>
+    <LinearLayout
+	    android:id="@+id/item_row_activity_linearLayout2"
+	    android:layout_width="match_parent"
+	    android:layout_height="35sp"
+	    android:layout_marginTop="5sp"
+	    android:orientation="horizontal" >
+	    <TextView
+	    	android:layout_width="140sp"
+		    android:layout_height="match_parent"
+		    android:gravity="left"
+		    android:textSize="25sp"
+		    android:layout_marginLeft="10sp"
+		    android:text="@string/item_row_activity_quantity" />
+		<EditText
+	        android:id="@+id/item_row_activity_edittext_quantity"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_marginRight="10dp"
+	        android:singleLine="true"
+	        android:inputType="number" />
+    </LinearLayout>    
+    <LinearLayout
+	    android:id="@+id/item_row_activity_linearLayout3"
+	    android:layout_width="match_parent"
+	    android:layout_height="35sp"
+	    android:layout_marginTop="5sp"
+	    android:orientation="horizontal" >
+		<TextView
+			android:layout_width="140sp"
+		    android:layout_height="match_parent"
+		    android:gravity="left"
+		    android:textSize="25sp"
+		    android:layout_marginLeft="10dp"
+		    android:text="@string/item_row_activity_unit" />
+		<EditText
+	        android:id="@+id/item_row_activity_edittext_unit"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_marginRight="10sp"
+	        android:singleLine="true" />
+    </LinearLayout>    
+    <LinearLayout
+	    android:id="@+id/item_row_activity_linearLayout4"
+	    android:layout_width="match_parent"
+	    android:layout_height="35sp"
+	    android:layout_marginTop="5sp"
+	    android:orientation="horizontal" >
+	    <TextView
+	    	android:layout_width="140sp"
+		    android:layout_height="match_parent"
+		    android:gravity="left"
+		    android:textSize="25sp"
+		    android:layout_marginLeft="10dp"
+		    android:text="@string/item_row_activity_price" />
+		<EditText
+	        android:id="@+id/item_row_activity_edittext_price"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_marginRight="10sp"
+	        android:singleLine="true"
+	        android:inputType="numberDecimal" />
+    </LinearLayout>
+	<LinearLayout
+	    android:id="@+id/item_row_activity_linearLayout5"
+	    android:layout_width="match_parent"
+	    android:layout_height="35sp"
+	    android:layout_marginTop="5sp"
+	    android:orientation="horizontal" >
+	    <TextView
+	        android:layout_width="140sp"
+	        android:layout_height="match_parent"
+	        android:gravity="left"
+	        android:textSize="25sp"
+	        android:layout_marginLeft="10dp"
+	        android:text="@string/item_row_activity_shop" />
+		<EditText
+	        android:id="@+id/item_row_activity_edittext_shop"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_marginRight="5sp"
+	        android:singleLine="true" />
+	</LinearLayout>
+    <Button
+    	android:id="@+id/item_row_activity_button_done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:gravity="left"
+        android:text="@string/item_row_activity_button_done"
+        android:onClick="klikSend" /> 
+</LinearLayout>
+	

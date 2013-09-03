@@ -1,0 +1,114 @@
+package model.bookshelfmanager;
+
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.example.bookshelfmanager.R;
+
+import dao.bookshelf.BookContentProvider;
+import database.bookshelf.BookTable;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
+import android.widget.AdapterView.OnItemClickListener;
+
+public class ListBooksActivity extends Activity {
+	private SimpleCursorAdapter adapter;
+	private boolean recommend = false;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_list_books);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.menu_list_books, menu);
+		return true;
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		fillListWithBooks();
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle item selection
+		switch (item.getItemId()) {
+		case R.id.new_note:
+			Intent intent = new Intent(this, NewBookActivity.class);
+			startActivity(intent);
+			return true;
+		case R.id.render_recommended:
+			recommend = recommend ? false : true;
+			fillListWithBooks();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
+	private void fillListWithBooks() {
+		final ListView listBooks = (ListView) findViewById(R.id.listView1);
+		String where = null;
+		String[] param = null;
+		if (recommend) {
+			where = BookTable.COLUMN_RECOMMEND + " = ?";
+			param = new String[] { "1" };
+		}
+		Cursor cursor = getContentResolver().query(
+				BookContentProvider.CONTENT_URI, null, where, param, null);
+		// startManagingCursor(cursor);
+		String[] columns = new String[] { BookTable.COLUMN_ISBN,
+				BookTable.COLUMN_TITLE, BookTable.COLUMN_AUTHORS,
+				BookTable.COLUMN_YEAR, BookTable.COLUMN_RECOMMEND };
+
+		int[] names = new int[] { android.R.id.text1, android.R.id.text2 };
+		adapter = new SimpleCursorAdapter(this,
+				android.R.layout.simple_list_item_activated_2, cursor, columns,
+				names);
+		listBooks.setAdapter(adapter);
+		listBooks.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				// TODO Auto-generated method stub
+				Cursor cursor = adapter.getCursor();
+				cursor.moveToPosition(arg2);
+				String id = cursor.getString(cursor
+						.getColumnIndex(BookTable.COLUMN_ID));
+				// Toast.makeText(getBaseContext(), "ID=" + id,
+				// Toast.LENGTH_SHORT).show();
+				cursor.close();
+				Intent intent = new Intent(arg1.getContext(),
+						NewBookActivity.class);
+				Bundle b = new Bundle();
+				b.putInt("bookId", Integer.parseInt(id));
+				intent.putExtras(b);
+				startActivity(intent);
+				// finish();
+			}
+
+		});
+
+	}
+
+	
+}

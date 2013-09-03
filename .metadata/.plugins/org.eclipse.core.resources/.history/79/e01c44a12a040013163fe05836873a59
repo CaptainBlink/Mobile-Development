@@ -1,0 +1,12 @@
+menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/list_books"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/menu_settings"/>
+    <item android:id="@+id/new_note" android:title="New Note"></item>
+    <item android:id="@+id/edit_note" android:title="Edit Note"></item>
+    <item android:id="@+id/render_recommended" android:title="Show Recommended"></item>
+
+</menu>

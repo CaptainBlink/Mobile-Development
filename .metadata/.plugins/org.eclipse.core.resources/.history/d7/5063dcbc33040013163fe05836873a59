@@ -1,0 +1,5 @@
+package dao.bookshelfmanager;
+
+public class BookContentProvider {
+
+}

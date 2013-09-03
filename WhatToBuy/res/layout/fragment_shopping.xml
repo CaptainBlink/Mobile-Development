@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    style="@style/button">
+
+    <TextView
+        android:id="@+id/txt_total_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/total_price"
+        android:textColor="#FFFFFF" />
+    
+    
+	<TableRow 
+		    android:id="@+id/row_buttons"
+		    android:layout_height="wrap_content" 
+		    android:layout_width="fill_parent"	
+		    >
+		    
+    <Button
+        android:id="@+id/btn_continue_shopping"
+        
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:onClick="continueShopping"
+        android:text="@string/continue_shopping" 
+        style="@style/button"/>
+
+    <Button
+        android:id="@+id/btn_buy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buy" 
+         android:onClick="buy"
+        android:layout_weight="1"
+        style="@style/button"
+        />
+
+    </TableRow>
+</LinearLayout>

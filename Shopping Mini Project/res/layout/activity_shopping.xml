@@ -1,0 +1,238 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ShoppingActivity" >
+	    <LinearLayout
+	    		android:layout_width="match_parent"
+	    		android:layout_height="70sp"
+	    		android:layout_alignParentTop="true"
+	    		android:orientation="horizontal" >
+	        <LinearLayout
+	    		android:layout_width="wrap_content"
+	    		android:layout_height="match_parent"
+	    		android:layout_weight="0.4"
+	    		android:orientation="vertical" >
+				    <Button
+				    	android:id="@+id/shopping_activity_button_add_shopping_item"
+				        android:layout_width="match_parent"
+				        android:layout_height="35sp"
+				        android:text="@string/shopping_activity_button_add_shopping_item" />
+				    <Button
+				        android:id="@+id/shopping_activity_button_remove_shopping_item"
+				        android:layout_width="match_parent"
+				        android:layout_height="35sp"
+				        android:text="@string/shopping_activity_button_remove_shopping_item" />
+			</LinearLayout>
+			<Spinner
+	 			android:id="@+id/shopping_activity_spinner"
+	 			android:layout_width="100sp"
+	 			android:layout_height="70sp"
+	 			android:layout_weight="1.0"
+	 			android:drawSelectorOnTop="true"/>
+			<LinearLayout
+	    		android:layout_width="wrap_content"
+	    		android:layout_height="70sp"
+	    		android:layout_weight="1.0"
+	    		android:orientation="vertical" >
+				    <Button
+				        android:id="@+id/shopping_activity_button_mark_purchase"
+				        android:layout_height="35sp"
+				        android:layout_width="match_parent" 
+				        android:text="@string/shopping_activity_button_mark_bought" />
+				    <Button
+				        android:id="@+id/shopping_activity_button_unmark_purchase"
+				        android:layout_height="35sp"
+				        android:layout_width="match_parent" 
+				        android:text="@string/shopping_activity_button_unmark_bought" />			    
+	    	</LinearLayout>
+	    </LinearLayout>
+	    <LinearLayout
+	     	android:layout_width="match_parent"
+	     	android:layout_height="50sp"
+	     	android:layout_marginTop="58sp"
+	     	android:orientation="horizontal">
+			<TextView
+			    android:id="@+id/column_name_item"
+		    	android:gravity="center"
+		        android:layout_width="400sp"
+		        android:layout_weight="7"
+		        android:layout_marginLeft="10sp"
+		        android:layout_height="50sp"
+		        android:text="@string/column_name_item" />
+			 <TextView 
+			    android:id="@+id/column_name_quantity"
+		        android:gravity="center"
+		        android:layout_width="60sp"
+		        android:layout_marginLeft="5sp"
+		        android:layout_height="50sp"
+		        android:layout_weight="2"
+		        android:text="@string/column_name_quantity" />
+		     <TextView 
+		        android:id="@+id/column_name_unit"
+		        android:gravity="center"
+		        android:layout_width="70sp"
+		        android:layout_marginLeft="5sp"
+		        android:layout_height="30sp"
+		        android:layout_weight="3"
+		        android:text="@string/column_name_unit" />
+		     <TextView android:id="@+id/column_name_price"
+		        android:gravity="center"
+		        android:layout_width="60sp"
+		        android:layout_marginLeft="5sp"
+		        android:layout_height="50sp"
+		        android:layout_weight="1.2"
+		        android:text="@string/column_name_price" />
+		     <TextView android:id="@+id/column_name_shop"
+		        android:gravity="center"
+		        android:layout_width="100sp"
+		        android:layout_marginRight="30sp"
+		        android:layout_marginLeft="5sp"
+		        android:layout_height="50sp"
+		        android:layout_weight="2"
+		        android:text="@string/column_name_shop" />
+		     <TextView android:id="@+id/column_name_shopping_quantity"
+		        android:gravity="center"
+		        android:layout_width="70sp"
+		        android:layout_marginRight="10sp"
+		        android:layout_marginLeft="5sp"
+		        android:layout_height="50sp"
+		        android:layout_weight="1.4"
+		        android:text="@string/column_name_shopping_quantity" />
+		     <TextView android:id="@+id/column_name_bought"
+		        android:gravity="center"
+		        android:layout_width="50sp"
+		        android:layout_marginRight="10sp"
+		        android:layout_marginLeft="5sp"
+		        android:layout_height="50sp"
+		        android:layout_weight=".25"
+		        android:text="@string/column_name_bought" />
+		     <TextView android:id="@+id/column_name_shopping_price"
+		        android:gravity="center"
+		        android:layout_width="70sp"
+		        android:layout_marginRight="10sp"
+		        android:layout_marginLeft="5sp"
+		        android:layout_height="50sp"
+		        android:layout_weight="1.4"
+		        android:text="@string/column_name_shopping_price" />
+		</LinearLayout>
+	    <ListView 
+        	android:id="@+id/shopping_listview" 
+        	android:layout_marginTop="110sp"
+        	android:layout_marginBottom="75sp"
+        	android:layout_width="match_parent" 
+        	android:layout_height="wrap_content"/> 
+	<RelativeLayout
+		android:orientation="horizontal" 
+	    android:layout_width="fill_parent"
+	    android:layout_gravity="bottom"
+	    android:layout_alignParentBottom="true"
+	    android:layout_height="70sp" >
+		<Button
+			android:id="@+id/shopping_activity_button_done"
+			android:layout_width="80sp"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentBottom="true"
+			android:layout_height="35sp"
+			android:layout_marginLeft="8sp"
+			android:layout_marginBottom="5sp"
+			android:layout_gravity="bottom"
+			android:text="@string/shopping_activity_button_done" />
+	  	<TextView
+		    android:id="@+id/shopping_activity_textview_bought_total"
+			android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentTop="true"
+		    android:textSize="20sp"
+		    android:layout_marginLeft="12sp"
+		    android:layout_marginRight="10sp"
+		    android:layout_above="@+id/shopping_activity_button_done"
+		    android:text="@string/shopping_activity_textview_bought_total" />
+		<TextView
+		    android:id="@+id/shopping_activity_textview_bought_total_amount"
+			android:layout_width="120sp"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentTop="true"
+		    android:textSize="20sp"
+		    android:gravity="right"
+		    android:layout_marginRight="20sp"
+		    android:layout_toRightOf="@+id/shopping_activity_textview_bought_total"
+		    android:text="@string/shopping_activity_textview_bought_total_amount" />	
+		<TextView
+		    android:id="@+id/shopping_activity_textview_bought_dkk"
+			android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentTop="true"
+		    android:textSize="20sp"
+		    android:layout_marginRight="30sp"
+		    android:layout_toRightOf="@+id/shopping_activity_textview_bought_total_amount"
+		    android:text="@string/shopping_activity_textview_bought_dkk" />
+		<TextView
+		    android:id="@+id/shopping_activity_textview_total_incl_bought"
+			android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_toLeftOf="@+id/shopping_activity_textview_total_amount_incl_bought"
+		    android:textSize="20sp"
+		    android:layout_alignParentBottom="true"
+		    android:layout_marginRight="10sp"
+		    android:layout_marginBottom="5sp"
+		    android:layout_gravity="bottom"
+		    android:text="@string/shopping_activity_textview_total_incl_bought" />
+		<TextView
+		    android:id="@+id/shopping_activity_textview_total_amount_incl_bought"
+			android:layout_width="120sp"
+		    android:layout_height="wrap_content"
+		    android:textSize="20sp"
+		    android:gravity="right"
+		    android:layout_marginRight="20sp"
+		    android:layout_marginBottom="5sp"
+		    android:layout_alignParentBottom="true"
+		    android:layout_gravity="bottom"
+		    android:layout_toLeftOf="@+id/shopping_activity_textview_dkk_incl_bought"
+		    android:text="@string/shopping_activity_textview_total_amount_incl_bought" />
+		<TextView
+		    android:id="@+id/shopping_activity_textview_dkk_incl_bought"
+			android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:textSize="20sp"
+		    android:layout_marginRight="30sp"
+		    android:layout_marginBottom="5sp"
+		    android:layout_alignParentRight="true"
+		    android:layout_alignParentBottom="true"
+		    android:layout_gravity="bottom"
+		    android:text="@string/shopping_activity_textview_dkk_incl_bought" />
+		<TextView
+		    android:id="@+id/shopping_activity_textview_total"
+			android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_toLeftOf="@+id/shopping_activity_textview_total_amount"
+		    android:textSize="20sp"
+		    android:layout_alignParentTop="true"
+		    android:layout_marginRight="10sp"
+		    android:layout_gravity="top"
+		    android:text="@string/shopping_activity_textview_total" />
+		<TextView
+		    android:id="@+id/shopping_activity_textview_total_amount"
+			android:layout_width="120sp"
+		    android:layout_height="wrap_content"
+		    android:textSize="20sp"
+		    android:gravity="right"
+		    android:layout_marginRight="20sp"
+		    android:layout_alignParentTop="true"
+		    android:layout_gravity="top"
+		    android:layout_toLeftOf="@+id/shopping_activity_textview_dkk"
+		    android:text="@string/shopping_activity_textview_total_amount" />
+		<TextView
+		    android:id="@+id/shopping_activity_textview_dkk"
+			android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:textSize="20sp"
+		    android:layout_marginRight="30sp"
+		    android:layout_above="@+id/shopping_activity_textview_dkk"
+		    android:layout_alignParentRight="true"
+		    android:layout_alignParentTop="true"
+		    android:layout_gravity="top"
+		    android:text="@string/shopping_activity_textview_dkk" />
+	</RelativeLayout>
+</RelativeLayout>

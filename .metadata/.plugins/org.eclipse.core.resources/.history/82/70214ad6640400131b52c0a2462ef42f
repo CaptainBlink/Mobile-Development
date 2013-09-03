@@ -1,0 +1,9 @@
+
+    <resources>
+        <string name="app_name">Bookshelf</string>
+       
+  
+     <string name="new_book">New Book</string>
+    <string name="title_activity_new_book">CRUD Book panel</string>
+    
+    </resources>

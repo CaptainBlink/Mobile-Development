@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+
+    <item android:id="@+id/menu_new_note"
+          android:title="@string/new_note"
+          android:showAsAction="ifRoom|withText" />
+    <item android:id="@+id/menu_edit_note"
+          android:title="Edit"
+          android:showAsAction="ifRoom|withText" />
+    <item android:id="@+id/menu_delete_note"
+          android:title="Delete Note"
+          android:showAsAction="ifRoom|withText" />
+    <item android:id="@+id/menu_show_map"
+          android:title="Show Map"
+          android:showAsAction="ifRoom|withText" />
+</menu>

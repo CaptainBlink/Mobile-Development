@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+       
+        android:orientation="vertical"
+        android:padding="10dip"
+        android:textAlignment="center"
+        style="@style/button"
+        
+         >
+
+        <TextView  
+            android:id="@+id/popup_text"       
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+             
+            android:textColor="#FFFFFF"
+            />
+
+        <Button
+            android:id="@+id/btn_popup_OK"
+            style="@style/button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:text="@string/ok" />
+
+    </LinearLayout>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+		<link rel="stylesheet" href="my.css" />
+		<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	</head>
+	<body>
+		<div id="content">
+
+		</div>
+		<script>
+		
+			function submitQuery(uri) {
+
+				var url1 = "https://www.googleapis.com/books/v1/volumes?q=";
+				var url2 = uri;
+				var url3 = "&callback=handleResponse";
+
+				var combined = url1 + url2 + url3;
+
+				$.getScript(combined);
+
+			}
+
+			function handleResponse(response) {
+
+				$("#content").html("");
+				var thumb;
+				var isbn;
+				for (var i = 0; i < response.items.length; i++) {
+					var item = response.items[i];
+					var title = item.volumeInfo.title;
+
+					try {
+
+						if (typeof item.volumeInfo.imageLinks.thumbnail != 'undefined') {
+							thumb = item.volumeInfo.imageLinks.thumbnail;
+						} else {
+							thumb = 'http://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/50px-No_image_available.svg.png';
+						}
+					} catch(Exception) {
+					}
+					var year = item.volumeInfo.publishedDate;
+					var authors = item.volumeInfo.authors
+					try {
+
+						if ( typeof item.volumeInfo.industryIdentifiers[1].identifier != 'undefined') {
+							isbn = item.volumeInfo.industryIdentifiers[1].identifier;
+						} else {
+							isbn = 'http://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/50px-No_image_available.svg.png';
+						}
+					} catch(Exception) {
+
+					}
+					var test = $("<img/>").attr({
+						src : thumb,
+						class : "imgs",
+						title : title,
+						year : year,
+						authors : authors,
+						isbn : isbn
+					}).appendTo("#content");
+
+				}
+
+				$('.imgs').click(function() {
+
+					var title = $(this).attr('title');
+					var author = $(this).attr('authors');
+					var year = $(this).attr('year');
+					var isbn = $(this).attr('isbn');
+
+					AndroidFunction.ObtainBookAttributes(title, author, year, isbn);
+
+				});
+
+			}
+
+			function submitReadingQuery(uri) {
+
+				var url1 = "https://www.googleapis.com/books/v1/volumes?q=";
+				var url2 = uri;
+				var url3 = "&callback=handleReadingResponse";
+
+				var combined = url1 + url2 + url3;
+
+				$.getScript(combined);
+
+			}
+
+			function handleReadingResponse(response) {
+				$("#content").html("");
+
+				for (var i = 0; i < response.items.length; i++) {
+					var item = response.items[i];
+					var title = item.volumeInfo.title;
+					var thumb = item.volumeInfo.imageLinks.thumbnail;
+					var year = item.volumeInfo.publishedDate;
+					var authors = item.volumeInfo.authors
+					var isbn = item.volumeInfo.industryIdentifiers[1].identifier;
+
+					link = item.accessInfo.webReaderLink + '&amp;output=embed';
+
+					var test = $("<img/>").attr({
+						src : thumb,
+						id : "id",
+						class : "imgs",
+						title : title,
+						year : year,
+						authors : authors,
+						isbn : isbn,
+						href : link
+					}).appendTo("#content");
+
+				}
+
+				$('.imgs').click(function() {
+					var link = $(this).attr('href');
+					if (link != null) {
+						AndroidFunction.ReadBook(link);
+					} else {
+						var title = $(this).attr('title');
+						var author = $(this).attr('authors');
+						var year = $(this).attr('year');
+						var isbn = $(this).attr('isbn');
+						AndroidFunction.ObtainBookAttributes(title, author, year, isbn);
+					}
+				});
+			}
+
+		</script>
+	</body>
+</html>

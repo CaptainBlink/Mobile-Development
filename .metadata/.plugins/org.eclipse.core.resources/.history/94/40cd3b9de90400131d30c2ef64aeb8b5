@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".ListBooksActivity" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center|top"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Google Books search :" />
+
+        <EditText
+            android:id="@+id/editText_Search"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:maxLength="300"
+            android:maxLines="1"
+            android:maxWidth="300dp"
+            android:selectAllOnFocus="false"
+            android:width="300dp" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/button1"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/linearLayout1" >
+
+        <ListView
+            android:id="@+id/listView1"
+            android:layout_width="283dp"
+            android:layout_height="400dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:paddingBottom="0dp"
+            android:paddingTop="0dp" >
+
+        </ListView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

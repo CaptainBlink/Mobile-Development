@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+		<link rel="stylesheet" href="my.css" />
+		<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	</head>
+	<body>
+		<div id="content">
+			<b>text text text</b>
+				</div>
+		<script>
+			//$(document).ready(function() {
+/*
+
+				$('.imgs').click(function() {
+					var title = $(this).attr('title');
+					var year = $(this).attr('year');
+					alert($(this).data('title'));
+				});*/
+
+				
+			
+		//	});
+			
+
+			function handleResponse(response) {
+			$("#content").html("");
+				for (var i = 0; i < response.items.length; i++) {
+					var item = response.items[i];
+					var title = item.volumeInfo.title;
+					var thumb = item.volumeInfo.imageLinks.thumbnail;
+					var year = item.volumeInfo.publishedDate;
+					var authors = item.volumeInfo.authors
+					var isbn = item.volumeInfo.industryIdentifiers;
+					//info = "Title : " + title + " Year : " + year + " Authors" + authors + " ISBN : " + isbn;
+					//		link = item.accessInfo.webReaderLink + '&amp;output=embed';
+						
+					var test = $("<img/>").attr({
+						src : thumb,
+						id : "id",
+						class : "imgs",
+						title : title,
+						year : year,
+						authors : authors,
+						isbn : isbn
+					}).appendTo("#content");
+				
+
+						
+					
+				}
+			
+				$('.imgs').click(function() {
+					var title = $(this).attr('title');
+					var author = $(this).attr('authors');
+					var year = $(this).attr('year');
+					var isbn = $(this).attr('isbn');
+										
+					//alert($(this).data('title'));
+					//alert(title);
+					
+					AndroidFunction.ObtainBookAttributes(title,author,year,isbn);
+					//document.write("<h1>" + title + "</h1>");
+				});
+			}
+
+			function submitQuery(uri) {
+
+				var url1 = "https://www.googleapis.com/books/v1/volumes?q=";
+				var url2 = uri;
+				var url3 = "&callback=handleResponse";
+
+				var combined = url1 + url2 + url3;
+				
+			$.getScript(combined);
+	
+			}
+			
+			function submitReadingQuery(uri) {
+
+				var url1 = "https://www.googleapis.com/books/v1/volumes?q=";
+				var url2 = uri;
+				var url3 = "&callback=handleReadingResponse";
+
+				var combined = url1 + url2 + url3;
+				
+			$.getScript(combined);
+	
+			}
+			function handleReadingResponse(response) {
+			$("#content").html("");
+				for (var i = 0; i < response.items.length; i++) {
+					var item = response.items[i];
+					var title = item.volumeInfo.title;
+					var thumb = item.volumeInfo.imageLinks.thumbnail;
+					var year = item.volumeInfo.publishedDate;
+					var authors = item.volumeInfo.authors
+					var isbn = item.volumeInfo.industryIdentifiers;
+					//info = "Title : " + title + " Year : " + year + " Authors" + authors + " ISBN : " + isbn;
+					link = item.accessInfo.webReaderLink + '&amp;output=embed';
+						
+					var test = $("<img/>").attr({
+						src : thumb,
+						id : "id",
+						class : "imgs",
+						title : title,
+						year : year,
+						authors : authors,
+						isbn : isbn,
+						href : link
+					}).appendTo("#content");
+				
+
+						
+					
+				}
+			
+				$('.imgs').click(function() {
+					var title = $(this).attr('title');
+					var author = $(this).attr('authors');
+					var year = $(this).attr('year');
+					var isbn = $(this).attr('isbn');
+										
+					//alert($(this).data('title'));
+					//alert(title);
+					
+					AndroidFunction.ObtainBookAttributes(title,author,year,isbn);
+					//document.write("<h1>" + title + "</h1>");
+				});
+			}
+
+			
+		</script>
+	</body>
+</html>

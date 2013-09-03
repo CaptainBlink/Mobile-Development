@@ -1,0 +1,73 @@
+package com.example.adrotator;
+
+
+import java.io.File;
+import java.io.IOException;
+
+import android.os.Bundle;
+import android.os.Environment;
+import android.app.Activity;
+import android.util.Log;
+import android.view.Menu;
+import android.widget.EditText;
+import jxl.*; 
+import jxl.read.biff.BiffException;
+import jxl.write.WritableWorkbook;
+
+public class MainActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		 WorkbookSettings wbSettings = new WorkbookSettings(); 				
+		    wbSettings.setUseTemporaryFileDuringWrite(true);   
+		 
+		    //get the sdcard's directory
+		    File sdCard = Environment.getExternalStorageDirectory();
+		    //add on the your app's path
+		    File dir = new File(sdCard.getAbsolutePath() + "/clickbankoffers.xls");
+		    //make them in case they're not there
+		    dir.mkdirs();
+		    //create a standard java.io.File object for the Workbook to use
+		    File wbfile = new File(dir,clickbankoffers.xls);
+		 
+		    WritableWorkbook wb = null;
+		 
+		    try{
+			//create a new WritableWorkbook using the java.io.File and
+			//WorkbookSettings from above
+			wb = Workbook.createWorkbook(wbfile,wbSettings); 
+		    }catch(IOException ex){
+			//Log.e(TAG,ex.getStackTrace().toString());
+			//Log.e(TAG, ex.getMessage());
+		    
+		    }
+		    
+		
+Sheet sheet = workbook.getSheet(0);
+Cell a1 = sheet.getCell(0,0); 
+			Cell b2 = sheet.getCell(1,1); 
+			Cell c2 = sheet.getCell(2,1); 
+	String stringa1 = a1.getContents(); 
+			String stringb2 = b2.getContents(); 
+			String stringc2 = c2.getContents(); 
+			
+			EditText editText= (EditText)findViewById(R.id.textArea);
+			String text = (stringa1+stringb2+stringc2+"OUTPUTTTTTTTTTTTTTTTTTTTTTT");
+			editText.append(text);
+			
+
+	
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.activity_main, menu);
+		return true;
+	}
+	
+
+}
